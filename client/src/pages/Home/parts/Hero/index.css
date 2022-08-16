@@ -6,7 +6,7 @@ section#hero {
     align-items: center;
 }
 
-.overlay-img {
+section#hero .overlay-img {
     position: absolute;
     bottom: 0;
     right: 0;

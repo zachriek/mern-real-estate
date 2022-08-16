@@ -1,5 +1,7 @@
 import { Residence1IMG, Residence2IMG, Residence3IMG } from '../assets/images';
 
+export const apiWhatsappLink = 'https://api.whatsapp.com/send?phone=6281274786920';
+
 export const residencesData = [
     {
         id: 1,

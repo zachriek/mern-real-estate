@@ -7,6 +7,8 @@ import BaseLayout from '../../layouts/BaseLayout';
 // Parts
 import Hero from './parts/Hero';
 import Residence from './parts/Residence';
+import Offer from './parts/Offer';
+import Contact from './parts/Contact';
 
 // Assets
 import { HeroIMG, DiamondOverlayPattern } from '../../assets/images';
@@ -19,6 +21,8 @@ const Home = () => {
         <BaseLayout title="Home">
             <Hero heroIMG={HeroIMG} overlayIMG={DiamondOverlayPattern} />
             <Residence data={residencesData} />
+            <Offer />
+            <Contact />
         </BaseLayout>
     );
 };

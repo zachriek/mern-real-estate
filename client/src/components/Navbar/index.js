@@ -1,19 +1,30 @@
 // React
 import React from 'react';
-import { DistributeVertical } from 'react-bootstrap-icons';
-import { Link, useLocation } from 'react-router-dom';
+import { Cart as CartIcon, DistributeVertical, GeoAltFill } from 'react-bootstrap-icons';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 // CSS
 import './index.css';
 
 const Navbar = () => {
     const location = useLocation();
+    const navigate = useNavigate();
+
+    const token = localStorage.getItem('token');
+
+    const handleLogout = () => {
+        if (window.confirm('Are you sure?')) {
+            localStorage.clear();
+            return navigate('/login');
+        }
+    };
 
     return (
         <nav className="navbar navbar-expand-md fixed-top">
             <div className="container">
                 <Link to="/" className="navbar-brand">
-                    Real Estate
+                    <GeoAltFill fill="var(--primary-color)" />
+                    <span className="ml-2">Real Estate</span>
                 </Link>
                 <button
                     className="navbar-toggler"
@@ -33,15 +44,33 @@ const Navbar = () => {
                         <Link to="/#home" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
                             Home
                         </Link>
-                        <Link to="/#properties" className={`nav-link ${location.pathname === '/properties' ? 'active' : ''}`}>
+                        <Link to="/properties" className={`nav-link ${location.pathname.includes('/properties') ? 'active' : ''}`}>
                             Properties
                         </Link>
-                        <Link to="/" className="nav-link ml-md-5">
-                            Login
-                        </Link>
-                        <Link to="/" className="btn btn-primary shadow-sm mt-3 mt-md-0">
-                            Sign Up
-                        </Link>
+                        {token === null ? (
+                            <>
+                                <Link to="/login" className="nav-link ml-md-5">
+                                    Login
+                                </Link>
+                                <Link to="/register" className="btn btn-user btn-primary shadow-sm mt-3 mt-md-0">
+                                    Sign Up
+                                </Link>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/carts" className={`nav-link ${location.pathname.includes('/carts') ? 'active' : ''}`}>
+                                    <CartIcon />
+                                    <span className="mx-2">Cart</span>
+                                    <span className="badge badge-pill badge-primary">2</span>
+                                </Link>
+                                <Link to="/dashboard" className="btn btn-user btn-primary shadow-sm mt-3 mt-md-0 ml-md-5">
+                                    Dashboard
+                                </Link>
+                                <button className="btn btn-user nav-link" onClick={handleLogout}>
+                                    Logout
+                                </button>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

@@ -4,18 +4,20 @@
     --primary-color: #1aa090;
     --dark-color: #121b25;
     --secondary-color: #858585;
+    --transparent-color: #1aa09070;
+    --dark-transparent-color: #121b2570;
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-html::-webkit-scrollbar {
+*::-webkit-scrollbar {
     background-color: var(--dark-color);
     width: 1rem;
 }
 
-html::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background-color: var(--secondary-color);
 }
 
@@ -49,10 +51,13 @@ body {
 
 .btn {
     border-radius: 0;
+}
+
+.btn.btn-user {
     padding: 0.4rem 1rem;
 }
 
-.btn.btn-lg {
+.btn.btn-user.btn-lg {
     padding: 0.8rem 2rem;
 }
 
@@ -61,6 +66,24 @@ body {
 .btn-primary:focus {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
+}
+
+.btn-outline-primary,
+.btn-outline-primary:focus {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+a.text-primary,
+a.text-primary:focus,
+a.text-primary:hover {
+    color: var(--primary-color) !important;
 }
 
 .form-control {
@@ -73,25 +96,29 @@ body {
 }
 
 .card {
+    border-radius: 0;
+}
+
+.card.card-user {
     background-color: transparent;
     border: none;
 }
 
-.card-body {
+.card-body.card-user {
     padding: 1.25rem 0;
 }
 
-.card-img-top {
+.card-img-top.card-user {
     border-radius: 0;
 }
 
-.card-title {
+.card-title.card-user {
     color: #fff;
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: 14px;
 }
 
-.card-text {
+.card-subtitle.card-user {
     color: #fff;
     opacity: 0.7;
 }
@@ -101,6 +128,7 @@ body {
     width: 50px !important;
     height: 50px !important;
     color: #fff !important;
+    background-color: var(--dark-color);
     transform: translateY(-50%);
     border: 3px solid var(--secondary-color);
     border-radius: 50%;
@@ -109,4 +137,34 @@ body {
 .swiper-button-next::after,
 .swiper-button-prev::after {
     font-size: 1.5rem !important;
+}
+
+hr {
+    background-color: #fff;
+    opacity: 0.3;
+}
+
+.nav-pills .nav-link {
+    color: var(--primary-color);
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: var(--primary-color);
+    border: 1px solid var(--dark-color);
+}
+
+.badge-primary {
+    background-color: var(--primary-color);
+}
+
+.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.bg-dark {
+    background-color: var(--dark-color) !important;
 }
